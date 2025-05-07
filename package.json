@@ -1,5 +1,5 @@
 {
-	"name": "-textmebot-whatsappapi",
+	"name": "companion-module-textmebot-whatsappapi",
 	"version": "1.0.0",
 	"main": "dist/main.js",
 	"type": "module",
