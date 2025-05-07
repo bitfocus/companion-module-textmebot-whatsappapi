@@ -16,6 +16,7 @@
 - Create an Invite-Link for the Group
 - The Invite-Link looks like https://chat.whatsapp.com/xyz where xyz is the group_info to be used
 - Use the group_info string to convert the group_info into an group_id (123456789@g.us). Therefore use the Function "Convert Group_Info to Group_ID" which writes the Group_ID into an Variable named the same as the groupname
+- Very Important (critical!): The phone number linked to the API (Sender) has to be part of the WA Group before sending a message using this API. Otherwise, WhatsApp might temporarily block your number because you are trying to send a message to a group that you are not a member of. And never remove your number from the Group while using the API to send messages to that Group. 
 
 ## ⚠️Warning⚠️ (please read and remember):
 
