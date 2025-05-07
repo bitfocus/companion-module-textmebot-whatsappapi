@@ -73,7 +73,7 @@ export function UpdateActions(self: ModuleInstance): void {
 				const message = await self.parseVariablesInString(o.message as string)
 				const image = await self.parseVariablesInString(o.image as string)
 				const fileType = await self.parseVariablesInString(o.fileType as string)
-				await self.apiGet(recipient , `text=${message}&${fileType}=${image}`)
+				await self.apiGet(recipient, `text=${message}&${fileType}=${image}`)
 			},
 		},
 		sendFileMessage: {
@@ -132,7 +132,12 @@ export function UpdateActions(self: ModuleInstance): void {
 
 					// Check if variable is already registered
 					if (!self.dynamicVariables.includes(varName)) {
-						self.setVariableDefinitions([ { variableId: varName, name: `Custom Variable: ${varName}` }])
+						self.setVariableDefinitions([
+							{
+								variableId: varName,
+								name: `Custom Variable: ${varName}`,
+							},
+						])
 						self.dynamicVariables.push(varName)
 						self.log('debug', `Registered new Companion variable: ${varName}`)
 					}
