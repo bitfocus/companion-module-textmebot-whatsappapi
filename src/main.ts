@@ -8,6 +8,8 @@ import { UpdateFeedbacks } from './feedbacks.js'
 import fetch from 'node-fetch'
 
 export class ModuleInstance extends InstanceBase<ModuleConfig> {
+	dynamicVariables: string[] = []
+
 	variableUpdateEnabled: boolean = false
 
 	config!: ModuleConfig // Setup in init()
@@ -18,6 +20,7 @@ export class ModuleInstance extends InstanceBase<ModuleConfig> {
 
 	async init(config: ModuleConfig): Promise<void> {
 		this.config = config
+		this.dynamicVariables = []
 
 		this.updateStatus(InstanceStatus.Ok)
 
@@ -57,23 +60,55 @@ export class ModuleInstance extends InstanceBase<ModuleConfig> {
 
 
 
-	async apiGet(recipient: string, apimethod: string): Promise<string | null> {
+	async apiGet(recipient: string, apimethod: string): Promise<any> {
 		this.log('debug', `Send GET request to ${apimethod}`)
 	
-		const url = `https://api.textmebot.com/send.php?recipient=${recipient}&apikey=${this.config.apiKey}&${apimethod}`
-		this.log('debug', `API Url: ${url}` )
+		const url = `https://api.textmebot.com/send.php?recipient=${recipient}&apikey=${this.config.apiKey}&${apimethod}&json=yes`
+		this.log('debug', `API Url: ${url}`)
+	
 		try {
 			const response = await fetch(url)
 			const text = await response.text()
-			return text
+			this.log('debug', `Response-Text: ${text}`)
+
+			// Versuche JSON zu parsen
+			try {
+				return JSON.parse(text)
+			} catch {
+				// Kein valides JSON → gib Text zurück
+				return text
+			}
 		} catch (error) {
 			this.log('error', `GET ${apimethod} failed: ${error}`)
 			return null
 		}
 	}
 	
-
 	
+
+	async apiGetGroupId(group_info: string): Promise<any> {
+		this.log('debug', `Try to get GroupID of ${group_info}`)
+	
+		const url = `https://api.textmebot.com/send.php?group_info=${group_info}&apikey=${this.config.apiKey}&json=yes`
+		this.log('debug', `API Url: ${url}`)
+	
+		try {
+			const response = await fetch(url)
+			const text = await response.text()
+			this.log('debug', `Response-Text: ${text}`)
+
+			// Versuche JSON zu parsen
+			try {
+				return JSON.parse(text)
+			} catch {
+				// Kein valides JSON → gib Text zurück
+				return text
+			}
+		} catch (error) {
+			this.log('error', `GET ${group_info} failed: ${error}`)
+			return null
+		}
+	}
 
 
 	
