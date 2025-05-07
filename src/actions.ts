@@ -27,7 +27,7 @@ export function UpdateActions(self: ModuleInstance): void {
 				const recipient = await self.parseVariablesInString(o.recipient as string)
 				const message = await self.parseVariablesInString(o.message as string)
 				await self.apiGet(recipient, `text=${message}`)
-			}
+			},
 		},
 
 		sendImageMessage: {
@@ -40,10 +40,8 @@ export function UpdateActions(self: ModuleInstance): void {
 					default: '49123456789',
 					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·i.e.·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789).·If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first!)."`,
 					useVariables: true,
-			
 					
 				},
-		
 				{
 					id: 'image',
 					type: 'textinput',
@@ -157,8 +155,7 @@ export function UpdateActions(self: ModuleInstance): void {
 				} else {
 					self.log('error', `Group ID could not be retrieved from provided group info.`)
 				}
-			}
-			,
+			},
 		}
 	})
 }
