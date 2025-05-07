@@ -28,7 +28,6 @@ export class ModuleInstance extends InstanceBase<ModuleConfig> {
 		this.updateFeedbacks() // export feedbacks
 		this.updateVariableDefinitions() // export variable definitions
 
-		
 	}
 	// When module gets deleted
 	async destroy(): Promise<void> {
@@ -56,9 +55,6 @@ export class ModuleInstance extends InstanceBase<ModuleConfig> {
 	updateVariableDefinitions(): void {
 		UpdateVariableDefinitions(this)
 	}
-
-
-
 
 	async apiGet(recipient: string, apimethod: string): Promise<any> {
 		this.log('debug', `Send GET request to ${apimethod}`)
