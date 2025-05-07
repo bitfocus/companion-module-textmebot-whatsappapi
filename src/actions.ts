@@ -11,7 +11,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					type: 'textinput',
 					label: 'Recipient',
 					default: '49123456789',
-					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·i.e.·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789).·If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first!)."`,
+					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789)⏎↹↹↹↹If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first)"`,
 					useVariables: true,
 				},
 				{
@@ -38,7 +38,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					type: 'textinput',
 					label: 'Recipient',
 					default: '49123456789',
-					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·i.e.·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789).·If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first!)."`,
+					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789)⏎↹↹↹↹If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first)"`,
 					useVariables: true,
 				},
 				{
@@ -83,7 +83,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					type: 'textinput',
 					label: 'Recipient',
 					default: '49123456789',
-					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·i.e.·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789).·If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first!)."`,
+					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789)⏎↹↹↹↹If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first)"`,
 					useVariables: true,
 				},
 				{
@@ -93,8 +93,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					default: '',
 					useVariables: true,
 					regex: Regex.SOMETHING,
-				}
-				
+				},				
 			],
 			callback: async (event) => {
 				const o = event.options
@@ -115,13 +114,13 @@ export function UpdateActions(self: ModuleInstance): void {
 					default: 'XYABCDEFG',
 					useVariables: true,
 				},
-				
+
 			],
 			callback: async (event) => {
 				const o = event.options
 
 				//const varName = o.target_variable as string
-			
+
 				// Fetch the group ID using the provided group_info
 				const groupInfo = await self.apiGetGroupId(o.group_info as string)
 				const varName = groupInfo.subject as string
@@ -130,16 +129,13 @@ export function UpdateActions(self: ModuleInstance): void {
 					if (!self.dynamicVariables) {
 						self.dynamicVariables = []
 					}
-			
+
 					// Check if variable is already registered
 					if (!self.dynamicVariables.includes(varName)) {
-						self.setVariableDefinitions([
-						{ variableId: varName, name: `Custom Variable: ${varName}` },
-						])
+						self.setVariableDefinitions([ { variableId: varName, name: `Custom Variable: ${varName}` },])
 						self.dynamicVariables.push(varName)
 						self.log('debug', `Registered new Companion variable: ${varName}`)
 					}
-			
 					// Set the value of the variable
 					self.setVariableValues({
 						[varName]: String(groupInfo.group_id),
@@ -149,6 +145,6 @@ export function UpdateActions(self: ModuleInstance): void {
 					self.log('error', `Group ID could not be retrieved from provided group info`)
 				}
 			},
-		}
+		},
 	})
 }
