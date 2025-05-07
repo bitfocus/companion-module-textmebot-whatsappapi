@@ -35,7 +35,7 @@ export function UpdateActions(self: ModuleInstance): void {
 		},
 
 		sendImageMessage: {
-			name: 'Send a Text Message with Image',
+			name: 'Send a Text Message with Attachement',
 			options: [
 				{
 					id: 'recipient',
@@ -48,7 +48,6 @@ export function UpdateActions(self: ModuleInstance): void {
 					
 				},
 		
-
 				{
 					id: 'image',
 					type: 'textinput',
@@ -57,6 +56,16 @@ export function UpdateActions(self: ModuleInstance): void {
 					useVariables: true,
 					regex: Regex.SOMETHING
 					
+				},
+				{
+					id: 'fileType',
+					type: 'dropdown',
+					label: 'FileType',
+					default: 'file',
+					choices: [
+						{ id: 'file', label: 'Image/Video' },
+						{ id: 'document', label: 'Document' },
+					],
 				},
 				{
 					id: 'message',
@@ -71,11 +80,11 @@ export function UpdateActions(self: ModuleInstance): void {
 				const recipient = await self.parseVariablesInString(o.recipient as string)
 				const message = await self.parseVariablesInString(o.message as string)
 				const image = await self.parseVariablesInString(o.image as string)
-				await self.apiGet(recipient , `text=${message}&file=${image}`)
+				await self.apiGet(recipient , `text=${message}&${o.fileType}=${image}`)
 			},
 		},
 		sendFileMessage: {
-			name: 'Send a File',
+			name: 'Send Audio',
 			options: [
 				{
 					id: 'recipient',
@@ -101,8 +110,8 @@ export function UpdateActions(self: ModuleInstance): void {
 			callback: async (event) => {
 				const o = event.options
 				const recipient = await self.parseVariablesInString(o.recipient as string)
-				const file = await self.parseVariablesInString(o.image as string)
-				await self.apiGet(recipient, `&document=${file}`)
+				const file = await self.parseVariablesInString(o.file as string)
+				await self.apiGet(recipient, `&audio=${file}`)
 			},
 		},
 
