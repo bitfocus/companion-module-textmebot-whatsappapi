@@ -95,7 +95,7 @@ export class ModuleInstance extends InstanceBase<ModuleConfig> {
 			this.log('error', `GET ${group_info} failed: ${error}`)
 			return null
 		}
-	}	
+	}
 }
 
 runEntrypoint(ModuleInstance, UpgradeScripts)

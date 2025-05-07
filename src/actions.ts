@@ -38,7 +38,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					type: 'textinput',
 					label: 'Recipient',
 					default: '49123456789',
-					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789)⏎↹↹↹↹If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first)"`,
+					tooltip: `Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·+·(+49123456789). If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first)`,
 					useVariables: true,
 				},
 				{
@@ -84,7 +84,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					type: 'textinput',
 					label: 'Recipient',
 					default: '49123456789',
-					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789)⏎↹↹↹↹If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first)"`,
+					tooltip: `Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·+·(+49123456789). If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first)`,
 					useVariables: true,
 				},
 				{
@@ -111,7 +111,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					id: 'group_info',
 					type: 'textinput',
 					label: 'Group_Info',
-					tooltip: `⏎↹↹↹↹↹↹'The·group·info·is·extracted·out·of·the·invite·link·of·a·group and·looks·like·<a href="https://chat.whatsapp.com/xyz" target="_blank">https://chat.whatsapp.com/xyz</a>·where·xyz·is·the·group_info·to·be·used'`, 
+					tooltip: `Format·phonenumer·without·leading·zeroes·like·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·+·(+49123456789). If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first)`,
 					default: 'XYABCDEFG',
 					useVariables: true,
 				},
