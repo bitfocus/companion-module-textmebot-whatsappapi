@@ -40,7 +40,6 @@ export function UpdateActions(self: ModuleInstance): void {
 					default: '49123456789',
 					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·i.e.·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789).·If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first!)."`,
 					useVariables: true,
-					
 				},
 				{
 					id: 'image',
@@ -48,8 +47,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					label: 'File Url',
 					default: '',
 					useVariables: true,
-					regex: Regex.SOMETHING
-					
+					regex: Regex.SOMETHING,
 				},
 				{
 					id: 'fileType',
@@ -87,17 +85,14 @@ export function UpdateActions(self: ModuleInstance): void {
 					default: '49123456789',
 					tooltip: `⏎↹↹↹↹↹↹"Format·phonenumer·without·leading·zeroes·i.e.·49123456789·for·Germany·or·1123456789·for·USA·or·with·leading·'+'·(+49123456789).·If·the·recipient·is·a·Group·enter·the·Group-ID·Variable·(Use·the·Convert·Group_Info·to·Group_ID·function·first!)."`,
 					useVariables: true,
-					
 				},
-		
 				{
 					id: 'file',
 					type: 'textinput',
 					label: 'File Url',
 					default: '',
 					useVariables: true,
-					regex: Regex.SOMETHING
-					
+					regex: Regex.SOMETHING,
 				}
 				
 			],
@@ -116,12 +111,10 @@ export function UpdateActions(self: ModuleInstance): void {
 					id: 'group_info',
 					type: 'textinput',
 					label: 'Group_Info',
-					tooltip: `⏎↹↹↹↹↹↹'The·group·info·is·extracted·out·of·the·invite·link·of·a·group.·The·Invite-Link·looks·like·https://chat.whatsapp.com/xyz·where·xyz·is·the·group_info·to·be·used'`, 
+					tooltip: `⏎↹↹↹↹↹↹'The·group·info·is·extracted·out·of·the·invite·link·of·a·group and·looks·like·https://chat.whatsapp.com/xyz·where·xyz·is·the·group_info·to·be·used'`, 
 					default: 'XYABCDEFG',
 					useVariables: true,
-			
-					
-				}		
+				},
 				
 			],
 			callback: async (event) => {
@@ -153,7 +146,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					})
 					self.log('debug', `Set variable "${varName}" to: ${groupInfo.group_id}`)
 				} else {
-					self.log('error', `Group ID could not be retrieved from provided group info.`)
+					self.log('error', `Group ID could not be retrieved from provided group info`)
 				}
 			},
 		}
