@@ -10,7 +10,7 @@ export function GetConfigFields(): SomeCompanionConfigField[] {
 			type: 'static-text',
 			id: 'configStaticText',
 			label: 'Important',
-			value: 'Get the API-Key: https://textmebot.com/#lepopup-NewApiKey | Register your phone number | Scan the QR Code and link your phone',
+			value: 'Get the API-Key: <a href="https://textmebot.com/#lepopup-NewApiKey" target="_blank">https://textmebot.com/#lepopup-NewApiKey</a> | Register your phone number | Scan the QR Code and link your phone',
 			width: 8,
 		},
 		{

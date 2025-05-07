@@ -79,7 +79,6 @@ export class ModuleInstance extends InstanceBase<ModuleConfig> {
 		this.log('debug', `Try to get GroupID of ${group_info}`)
 		const url = `https://api.textmebot.com/send.php?group_info=${group_info}&apikey=${this.config.apiKey}&json=yes`
 		this.log('debug', `API Url: ${url}`)
-	
 		try {
 			const response = await fetch(url)
 			const text = await response.text()
@@ -96,10 +95,7 @@ export class ModuleInstance extends InstanceBase<ModuleConfig> {
 			this.log('error', `GET ${group_info} failed: ${error}`)
 			return null
 		}
-	}
-
-
-	
+	}	
 }
 
 runEntrypoint(ModuleInstance, UpgradeScripts)

@@ -72,7 +72,8 @@ export function UpdateActions(self: ModuleInstance): void {
 				const recipient = await self.parseVariablesInString(o.recipient as string)
 				const message = await self.parseVariablesInString(o.message as string)
 				const image = await self.parseVariablesInString(o.image as string)
-				await self.apiGet(recipient , `text=${message}&${o.fileType}=${image}`)
+				const fileType = await self.parseVariablesInString(o.fileType as string)
+				await self.apiGet(recipient , `text=${message}&${fileType}=${image}`)
 			},
 		},
 		sendFileMessage: {
@@ -110,7 +111,7 @@ export function UpdateActions(self: ModuleInstance): void {
 					id: 'group_info',
 					type: 'textinput',
 					label: 'Group_Info',
-					tooltip: `⏎↹↹↹↹↹↹'The·group·info·is·extracted·out·of·the·invite·link·of·a·group and·looks·like·https://chat.whatsapp.com/xyz·where·xyz·is·the·group_info·to·be·used'`, 
+					tooltip: `⏎↹↹↹↹↹↹'The·group·info·is·extracted·out·of·the·invite·link·of·a·group and·looks·like·<a href="https://chat.whatsapp.com/xyz" target="_blank">https://chat.whatsapp.com/xyz</a>·where·xyz·is·the·group_info·to·be·used'`, 
 					default: 'XYABCDEFG',
 					useVariables: true,
 				},
